@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/saludo', function () {
+    return view('Hola mundo desde laravel');
+});
+Route::get('/galeria/{numero}', function ($numero) {
+    return "Este es el código de la foto: ".$numero;
+}) -> where('numero','[0-9]+');
 
 Route::middleware([
     'auth:sanctum',
