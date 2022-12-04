@@ -1,9 +1,31 @@
 @extends('pagPlantilla')
 
 @section('titulo')
-    <h1>Página lista </h1>
+    <h1 class="display-4">Página lista </h1>
 @endsection
 
 @section('seccion')
     <h3> Lista </h3>
+   
+    <table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Código</th>
+            <th scope="col">Apellidos y Nombres</th>
+            <th scope="col">Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($xAlumnos as $item) 
+        <tr>
+            <th scope="row">{{ $item->id}}</th>
+            <td>{{ $item->codEst}}</td>
+            <td>{{ $item->apeEst}}, {{ $item->nomEst}}</td>
+            <td>@mdo</td>
+        </tr>
+        @endforeach
+    </tbody>
+    </table>
+    
 @endsection

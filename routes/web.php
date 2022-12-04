@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PagesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,29 +14,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+ 
+//Route::resource('photos', PagesController::class);
+//Route::get('/user/{id}', [PagesController::class,'show']);
 
-Route::get('/', function () {
-    return view('welcome');
-}) -> name('xInicio');
+Route::get('/',[PagesController::class,'fnIndex'] )->name('xIndex');
+Route::get('/lista',[PagesController::class,'fnLista'])->name('xLista');
+Route::get('/galeria/{numero?}', [PagesController::class,'fnGaleria']) -> where('numero','[0-9]+')->name('xGaleria');
 
-Route::get('/saludo', function () {
-    return "Hola mundo desde laravel";
-});
-
-Route::get('/galeria/{numero}', function ($numero) {
-    return "Este es el código de la foto: ".$numero;
-}) -> where('numero','[0-9]+');
-
-Route::view ('/galeria', 'pagGaleria' ,['valor'=>15])->name('xGaleria');
-
-Route::get('/lista', function () {
-    return view ('pagLista');
-}) -> name('xLista');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
