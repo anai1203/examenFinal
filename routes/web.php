@@ -15,13 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+}) -> name('xInicio');
+
 Route::get('/saludo', function () {
-    return view('Hola mundo desde laravel');
+    return "Hola mundo desde laravel";
 });
+
 Route::get('/galeria/{numero}', function ($numero) {
     return "Este es el código de la foto: ".$numero;
 }) -> where('numero','[0-9]+');
+
+Route::view ('/galeria', 'pagGaleria' ,['valor'=>15])->name('xGaleria');
+
+Route::get('/lista', function () {
+    return view ('pagLista');
+}) -> name('xLista');
 
 Route::middleware([
     'auth:sanctum',
