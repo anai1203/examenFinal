@@ -16,12 +16,16 @@
             <th scope="col">Editar</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="table table-success table-striped">
         @foreach ($xAlumnos as $item) 
         <tr>
             <th scope="row">{{ $item->id}}</th>
             <td>{{ $item->codEst}}</td>
-            <td>{{ $item->apeEst}}, {{ $item->nomEst}}</td>
+            <td>
+                <a href="{{ route('Estudiante.xDetalle' , $item->id)}}">
+                {{ $item->apeEst}}, {{ $item->nomEst}}
+                </a>
+            </td>
             <td>@mdo</td>
         </tr>
         @endforeach
