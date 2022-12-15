@@ -7,7 +7,7 @@
 @section('seccion')
 
 @if(session('msj'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{ session('msj') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
         </div>
@@ -29,7 +29,7 @@
         @enderror
 
         @if($errors -> has('apeEst'))
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 El <strong>apellido</strong> es requerido 
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -56,7 +56,7 @@
             <option value="0">Inactivo</option>
             <option value="1">Activo</option>
         </select>
-        <button class="btn btn-success" type="submit">Agregar</button>
+        <button class="btn btn-danger" type="submit">Agregar</button>
     </form>
 
     
@@ -87,10 +87,10 @@
                 <form action="{{ route('Estudiante.xEliminar', $item->id) }}" method="post" class="d-inline">
                     @method('DELETE')
                     @csrf
-                    <button type="submit" class="btn btn-danger btn-sm">x</button>
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                 </form>
                 <a class="btn bt-warning btn-sm" href="{{ route('Estudiante.xActualizar', $item->id ) }}">
-                    ...A
+                    Actualizar
                 </a>
             </td>
             <td>@mdo</td>
